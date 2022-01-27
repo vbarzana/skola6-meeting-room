@@ -45,7 +45,7 @@ const SignIn: FC = () => {
               </IonText>
             </div>
             <div className="column">
-              {/* <IonButton
+              <IonButton
                 onClick={signInGoogle}
                 style={{ marginBottom: 8 }}
                 shape="round"
@@ -53,14 +53,6 @@ const SignIn: FC = () => {
                 color="primary">
                 <IonIcon icon={logoGoogle} style={{ marginRight: 8 }} />
                 Sign In With Google
-              </IonButton> */}
-              <IonButton
-                onClick={signInGithub}
-                shape="round"
-                fill="outline"
-                color="secondary">
-                <IonIcon icon={logoGithub} style={{ marginRight: 8 }} />
-                Sign In With Github
               </IonButton>
             </div>
           </div>
