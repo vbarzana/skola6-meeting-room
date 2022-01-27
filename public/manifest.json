@@ -1,0 +1,64 @@
+{
+  "short_name": "sk6-meeting-room",
+  "name": "sk6-meeting-room",
+  "start_url": "https://skola6-meeting-room.web.app",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#fff",
+  "description": "Skola 6 meeting room app",
+  "icons": [
+    {
+      "src": "assets/icon/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "My Profile",
+      "short_name": "My Profile",
+      "description": "Go to your profile screen",
+      "url": "/profile_shortcut"
+    },
+    {
+      "name": "Record",
+      "short_name": "Record",
+      "description": "Add dates records",
+      "url": "/records"
+    },
+    {
+      "name": "Nearby Stations",
+      "short_name": "Nearby Stations",
+      "description": "Find nearby dates stations",
+      "url": "/nearby"
+    },
+    {
+      "name": "Friends",
+      "short_name": "Friends",
+      "description": "Go to your friends screen",
+      "url": "/friends"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshots/Screenshot1.jpg",
+      "sizes": "1080x2400",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/screenshots/Screenshot2.jpg",
+      "sizes": "1080x2400",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/screenshots/Screenshot3.jpg",
+      "sizes": "1080x2400",
+      "type": "image/jpeg"
+    }
+  ]
+}

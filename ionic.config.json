@@ -1,0 +1,7 @@
+{
+  "name": "sk6-meeting-room",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

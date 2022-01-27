@@ -1,0 +1,12 @@
+.home_header {
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  width: calc(100% - 16px);
+  align-items: center;
+  margin-inline: 8px;
+  margin-block: 12px;
+  padding-inline: 12px;
+  padding-block: 8px;
+  border-radius: 8px;
+}

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "sk6-meeting-room",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
