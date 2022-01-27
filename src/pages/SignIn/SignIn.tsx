@@ -1,9 +1,17 @@
 import React, { FC } from "react";
-import { IonContent, IonPage, IonText, IonButton, IonIcon } from "@ionic/react";
+import {
+  IonContent,
+  IonPage,
+  IonText,
+  IonButton,
+  IonIcon,
+  IonImg,
+} from "@ionic/react";
 import { useDimensions } from "../../hooks/useDimensions";
 import { logoGoogle } from "ionicons/icons";
 import "./SignIn.css";
 import { useSignIn } from "../../hooks/useSignIn";
+const photoURL = "../../../assets/screenshots/meeting-room.jpg";
 
 const SignIn: FC = () => {
   const { signInGoogle } = useSignIn();
@@ -23,7 +31,6 @@ const SignIn: FC = () => {
           <div
             className="column"
             style={{
-              height: height * 0.4,
               justifyContent: "space-around",
               alignItems: "center",
               backgroundColor: "var(--ion-card-background)",
@@ -32,6 +39,7 @@ const SignIn: FC = () => {
               boxShadow: "rgb(0 0 0 / 12%) 0px 4px 16px",
             }}
           >
+            <IonImg src={photoURL} className="row"/>
             <div
               className="row"
               style={{
