@@ -58,7 +58,7 @@ const Home: React.FC = () => {
                 textOverflow: "ellipsis",
                 overflow: "hidden",
               }}>
-              Planning on recycling more?
+              Need some time alone?
             </span>
           </div>
           <div className="row" style={{ alignItems: "center" }}>
@@ -109,7 +109,7 @@ const Home: React.FC = () => {
                 </IonText>
               </div>
               <IonText color="dark">
-                <span>Items recycled this week</span>
+                <span>Times booked this week</span>
               </IonText>
             </div>
           </div>
@@ -170,7 +170,7 @@ const Home: React.FC = () => {
               routerDirection="forward"
               style={{ marginTop: 12 }}
               mode="md">
-              Record Data
+              Book room now
             </IonButton>
           </IonCard>
         )}
@@ -241,7 +241,7 @@ const Home: React.FC = () => {
                 fontSize: 16,
                 fontWeight: "bold",
               }}>
-              Most Recycled Items
+              Booked today
             </span>
           </IonText>
           <div className="column" style={{ marginTop: 12 }}>

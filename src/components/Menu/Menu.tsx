@@ -27,7 +27,7 @@ const Menu: FC<Props> = ({}) => {
   const { height } = useDimensions()
 
   const openGithub = () =>
-    window.open("https://github.com/Adoobdoob71/EcoCycle_Web", "_blank")
+    window.open("https://github.com/vbarzana/skola6-meeting-room", "_blank")
 
   return (
     <IonMenu contentId="main" type="overlay">

@@ -140,7 +140,7 @@ const Profile: FC = () => {
                     </IonText>
                   </div>
                   <IonText color="dark">
-                    <span>Items recycled this week</span>
+                    <span>Times booked this week</span>
                   </IonText>
                 </div>
               </div>
@@ -180,7 +180,7 @@ const Profile: FC = () => {
                     routerDirection="forward"
                     style={{ marginTop: 12 }}
                     mode="md">
-                    Record Data
+                    Book room now
                   </IonButton>
                 )}
               </IonCard>
@@ -217,7 +217,7 @@ const Profile: FC = () => {
                     fontSize: 16,
                     fontWeight: "bold",
                   }}>
-                  Most Recycled Items
+                  Booked today
                 </span>
               </IonText>
               <div className="column" style={{ marginTop: 12 }}>

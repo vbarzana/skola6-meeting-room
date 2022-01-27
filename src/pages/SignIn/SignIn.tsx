@@ -1,13 +1,13 @@
-import React, { FC } from "react"
-import { IonContent, IonPage, IonText, IonButton, IonIcon } from "@ionic/react"
-import { useDimensions } from "../../hooks/useDimensions"
-import { logoGithub, logoGoogle } from "ionicons/icons"
-import "./SignIn.css"
-import { useSignIn } from "../../hooks/useSignIn"
+import React, { FC } from "react";
+import { IonContent, IonPage, IonText, IonButton, IonIcon } from "@ionic/react";
+import { useDimensions } from "../../hooks/useDimensions";
+import { logoGoogle } from "ionicons/icons";
+import "./SignIn.css";
+import { useSignIn } from "../../hooks/useSignIn";
 
 const SignIn: FC = () => {
-  const { signInGithub, signInGoogle } = useSignIn()
-  const { height } = useDimensions()
+  const { signInGoogle } = useSignIn();
+  const { height } = useDimensions();
 
   return (
     <IonPage>
@@ -18,7 +18,8 @@ const SignIn: FC = () => {
             height: height,
             justifyContent: "center",
             alignItems: "center",
-          }}>
+          }}
+        >
           <div
             className="column"
             style={{
@@ -29,18 +30,20 @@ const SignIn: FC = () => {
               padding: 32,
               borderRadius: 8,
               boxShadow: "rgb(0 0 0 / 12%) 0px 4px 16px",
-            }}>
+            }}
+          >
             <div
               className="row"
               style={{
                 alignItems: "center",
-              }}>
+              }}
+            >
               <IonText color="dark">
                 <span style={{ fontSize: 24, marginRight: 4 }}>Sign into</span>
               </IonText>
               <IonText color="primary">
                 <span style={{ fontSize: 24, fontWeight: "bold" }}>
-                Skola 6 Meeting Room
+                  Skola 6 Meeting Room
                 </span>
               </IonText>
             </div>
@@ -50,7 +53,8 @@ const SignIn: FC = () => {
                 style={{ marginBottom: 8 }}
                 shape="round"
                 fill="outline"
-                color="primary">
+                color="primary"
+              >
                 <IonIcon icon={logoGoogle} style={{ marginRight: 8 }} />
                 Sign In With Google
               </IonButton>
@@ -59,7 +63,7 @@ const SignIn: FC = () => {
         </div>
       </IonContent>
     </IonPage>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

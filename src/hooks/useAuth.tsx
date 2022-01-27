@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { getAuth, User, onAuthStateChanged } from "firebase/auth"
+import { useEffect, useState } from "react";
+import { getAuth, User, onAuthStateChanged } from "firebase/auth";
 import {
   orderBy,
   onSnapshot,
@@ -12,41 +12,42 @@ import {
   doc,
   getDoc,
   updateDoc,
-} from "firebase/firestore"
-import { RECORD } from "../utils/interfaces"
-import { DateTime } from "luxon"
-import { orderRecordArray } from "../utils/functions"
-import { DAYS_TO_LOAD } from "../utils/constants"
+} from "firebase/firestore";
+import { RECORD } from "../utils/interfaces";
+import { DateTime } from "luxon";
+import { orderRecordArray } from "../utils/functions";
+import { DAYS_TO_LOAD } from "../utils/constants";
 
 function useAuth() {
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [records, setRecords] = useState<RECORD[]>([])
-  const [recycledTotal, setRecycledTotal] = useState(0)
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [records, setRecords] = useState<RECORD[]>([]);
+  const [recycledTotal, setRecycledTotal] = useState(0);
   const [convertedRecords, setConvertedRecords] = useState<
     { items: number; date: Timestamp }[] | undefined
-  >(undefined)
+  >(undefined);
 
-  const auth = getAuth()
+  const auth = getAuth();
 
-  const updateUser = async (newUser: User) => setCurrentUser(newUser)
+  const updateUser = async (newUser: User) => setCurrentUser(newUser);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     const unsubAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const exists = await getDoc(doc(getFirestore(), "users", user.uid))
-        const user_data = await fetch(
-          `https://api.github.com/user/${user.providerData[0].uid}`
-        )
-        const user_parsed = await user_data.json()
+        const exists = await getDoc(doc(getFirestore(), "users", user.uid));
+
+        const user_parsed = {
+          email: "test@example.com",
+          login: "test@example.com",
+        };
         if (exists.exists())
           await updateDoc(doc(getFirestore(), "users", user.uid), {
             email: user.providerData[0].email,
             photoURL: user.photoURL,
             displayName: user_parsed?.login,
             queryName: user_parsed?.login?.toLowerCase() || "",
-          })
+          });
         else
           await setDoc(doc(getFirestore(), "users", user.uid), {
             email: user.providerData[0].email,
@@ -55,39 +56,37 @@ function useAuth() {
             queryName: user_parsed?.login?.toLowerCase() || "",
             uid: user.uid,
             joinedOn: Timestamp.now(),
-          })
+          });
         setCurrentUser({
           ...user,
           displayName: user_parsed?.login,
           email: user.providerData[0].email,
-        })
+        });
       } else {
-        setCurrentUser(null)
+        setCurrentUser(null);
       }
-      setLoading(false)
-    })
-    return () => unsubAuth()
-  }, [])
+      setLoading(false);
+    });
+    return () => unsubAuth();
+  }, []);
 
   useEffect(() => {
     if (currentUser) {
-      const ref = collection(getFirestore(), "records")
+      const ref = collection(getFirestore(), "records");
       const date = DateTime.now()
         .minus({ days: DAYS_TO_LOAD })
         .startOf("day")
-        .toJSDate()
+        .toJSDate();
       const refQuery = query(
         ref,
         orderBy("submittedOn", "desc"),
         where("uid", "==", currentUser?.uid),
         where("submittedOn", ">", Timestamp.fromDate(date))
-      )
-      const timestamp = Timestamp.fromDate(
-        DateTime.now().startOf("day").toJSDate()
-      )
+      );
+
       const unsubFirestore = onSnapshot(refQuery, (value) => {
-        setRecords([])
-        setRecycledTotal(0)
+        setRecords([]);
+        setRecycledTotal(0);
         value.docs
           .reverse()
           .forEach((item) =>
@@ -95,20 +94,20 @@ function useAuth() {
               ...records,
               { ...item.data(), id: item.id } as RECORD,
             ])
-          )
-      })
-      return () => unsubFirestore()
+          );
+      });
+      return () => unsubFirestore();
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   useEffect(() => {
-    const convRecs = orderRecordArray(records)
-    setConvertedRecords(convRecs)
+    const convRecs = orderRecordArray(records);
+    setConvertedRecords(convRecs);
     if (convRecs)
       setRecycledTotal(
         convRecs.reduce((prev, current) => prev + current.items, 0)
-      )
-  }, [records])
+      );
+  }, [records]);
 
   const authObj = {
     auth,
@@ -117,7 +116,7 @@ function useAuth() {
     records,
     recycledTotal,
     convertedRecords,
-  }
+  };
 
   return {
     currentUser,
@@ -128,7 +127,7 @@ function useAuth() {
     recycledTotal,
     convertedRecords,
     loading,
-  }
+  };
 }
 
-export { useAuth }
+export { useAuth };
